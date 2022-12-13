@@ -7,7 +7,7 @@ Created the 13/12/2022
 from typing import List
 from dash import html
 import dash_bootstrap_components as dbc
-
+from yattag import Doc
 
 data_gdr = [dict(lab_acronym='CEMES',
                  lab='Centre d\'Ellaboration de Matériaux et d\'Etudes Structurales',
@@ -64,8 +64,8 @@ class DataCard:
             dbc.CardBody(
                 [html.H3(self.lab_acronym, className="card-title"),
                  html.H6(html.A(children=self.lab, href=self.lab_url, target='_blank')),
-                 html.H6(self.city),
-                 html.P(str(self.people)),
+                 html.H6(self.group),
+                 html.Ul(children=[html.Li(p) for p in self.people]),
                  html.P(self.description, className="card-text",),]
             ),
         )

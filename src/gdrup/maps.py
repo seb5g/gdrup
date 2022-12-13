@@ -22,7 +22,11 @@ def get_popup_from_card(data_card):
     with tag('a', href=data_card['lab_url']):
         text(data_card['lab_acronym'])
     with tag('p'):
-        text(str(data_card['themes']))
+        text(data_card['city'])
+        with tag('ul'):
+            for theme in data_card['themes']:
+                with tag('li'):
+                    text(theme)
     return doc.getvalue()
 
 
